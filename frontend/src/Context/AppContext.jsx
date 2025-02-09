@@ -1,22 +1,17 @@
 import { createContext } from "react";
 import { doctors } from "../assets/assets";
 
-export const Appcontext = createContext()
+export const AppContext = createContext(); // Change Appcontext to AppContext
 
-{/* create context provider function */}
-
-const AppContextProvider  =(props)=>{
-    {/* add variables which can be accessed by any component using props */}
-
-    const value= {
+const AppContextProvider = (props) => {
+    const value = {
         doctors
-    }
-    return(
-        <Appcontext.Provider value={value}>
+    };
+    return (
+        <AppContext.Provider value={value}> {/* Change Appcontext to AppContext */}
             {props.children}
-        </Appcontext.Provider>
-    )
+        </AppContext.Provider>
+    );
+};
 
-}
-
-export default AppContextProvider
+export default AppContextProvider;

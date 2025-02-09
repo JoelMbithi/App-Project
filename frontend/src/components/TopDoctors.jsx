@@ -1,9 +1,10 @@
 import React, { useContext } from 'react'
-import { Appcontext } from '../Context/AppContext'
+import { AppContext } from '../Context/AppContext'
+
 
 const TopDoctors = () => {
     // Fix: Use useContext instead of useState
-    const { doctors } = useContext(Appcontext)
+    const { doctors } = useContext(AppContext)
 
     return (
         <div className='flex flex-col items-center gap-4 my-16 text-gray-900 md:mx-10'>
