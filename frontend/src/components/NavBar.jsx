@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import {assets} from '../assets/assets'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Home from '../Pages/Home'
 import About from '../Pages/About'
 import Contact from '../Pages/Contact'
@@ -9,10 +9,11 @@ import Doctors from '../Pages/Doctors'
 const NavBar = () => {
 const[showMenu, setShowMenu] = useState(false)
 const [token, setToken] = useState(true)
+const navigate =useNavigate()
 
 return (
     <div className='flex items-center justify-between text-sm py-4 mb-5 border-b-gray-400'>
-        <img className='w-35 cursor-pointer' src={assets.logo} alt='' />
+        <img onClick={()=>navigate('/')} className='w-35 cursor-pointer' src={assets.logo} alt='' />
 
         <ul className='hidden sm:flex items-start gap-4 font-medium relative'>
             <li className='py-1'>
