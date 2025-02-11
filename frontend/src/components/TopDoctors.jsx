@@ -18,7 +18,7 @@ const TopDoctors = () => {
                     <div 
                         key={doctor.id || doctor._id} // Ensure unique key
                         className='border border-blue-200 rounded-xl overflow-hidden cursor-pointer hover:-translate-y-2 transition-all duration-500'
-                        onClick={() => navigate(`/appointment/${doctor.id || doctor._id}`)} // Fix reference
+                onClick={() => {navigate(`/appointment/${doctor.id || doctor._id}`); scrollTo=(0,0)}} // Fix reference
                     >
                         <img className='bg-blue-50 w-full' src={doctor.image} alt={doctor.name} />
                         <div className='p-4'>
@@ -33,7 +33,7 @@ const TopDoctors = () => {
                 ))}
             </div>
             
-            <button className='mt-6 px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-all'>
+            <button className='mt-6 px-6 py-2 bg-gray-00 text-white rounded-md hover:bg-gray-600 transition-all'>
                 More
             </button>
         </div>
