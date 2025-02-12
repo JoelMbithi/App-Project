@@ -12,23 +12,25 @@ const [token, setToken] = useState(true)
 const navigate =useNavigate()
 
 return (
-    <div className='flex items-center justify-between text-sm py-4 mb-5 border-b-gray-400'>
+    <div>
+    <div className='flex items-center justify-between text-sm py-4 mb-5 border-b-gray-400 '>
+
         <img onClick={()=>navigate('/')} className='w-35 cursor-pointer' src={assets.logo} alt='' />
 
         <ul className='hidden sm:flex items-start gap-4 font-medium relative'>
-            <li className='py-1'>
+            <li className='py-1  border border-gray-300  px-4 hover:scale-105 transition-all' >
                 <Link to='/' element={<Home />}>Home</Link>
-                <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden' />
+                <hr className='border-none outline-none h-0.5 bg-blue-600 w-3/5 m-auto hidden' />
             </li>
-            <li className='py-1'>
+            <li className='py-1 border border-gray-300  px-4 hover:scale-105 transition-all'>
                 <Link to='/doctors' element={<Doctors />}>All Doctors</Link>
-                <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden' />
+                <hr className='border-none outline-none h-0.5 bg-blue-600    w-3/5 m-auto hidden' />
             </li>
-            <li className='py-1'>
+            <li className='py-1 border border-gray-300  px-4 hover:scale-105 transition-all'>
                 <Link to='/about' element={<About />}>About</Link>
                 <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden' />
             </li>
-            <li className='py-1'>
+            <li className='py-1 border border-gray-300  px-4 hover:scale-105 transition-all'>
                 <Link to='/contacts' element={<Contact />}>Contacts</Link>
                 <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden' />
             </li>
@@ -51,7 +53,13 @@ return (
                     : <button className='bg-blue-500 text-white px-3 py-3 rounded-full font-light'>Create account</button>
             }
         </div>
+       
     </div>
+    <div>
+       <hr className='my-2 mb-5'/>
+       </div>
+    </div>
+    
 )
 }
 
