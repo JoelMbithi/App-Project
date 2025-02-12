@@ -18,7 +18,7 @@ const Contact = () => {
           <p  className='text-gray-500'>Tel: (+254) 743-861-565 <br/> Email: joellembithi@gmail.com</p>
           <p className='font-semibold text-lg text-gray-600'>Careers at DigiCare Doc</p>
           <p className='text-gray-500'>Learn more about our teams and jobs openings.</p>
-          <button>Explore Jobs</button>
+          <button className='border border-black px-8 py-4 text-sm hover:bg-black hover:text-white transition-all duration-500'>Explore Jobs</button>
         </div>
       </div>
     </div>
