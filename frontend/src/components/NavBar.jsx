@@ -1,66 +1,81 @@
-import React, { useState } from 'react'
-import {assets} from '../assets/assets'
-import { Link, useNavigate } from 'react-router-dom'
-import Home from '../Pages/Home'
-import About from '../Pages/About'
-import Contact from '../Pages/Contact'
-import Doctors from '../Pages/Doctors'
+import React, { useState } from 'react';
+import { assets } from '../assets/assets';
+import { Link, useNavigate } from 'react-router-dom';
 
 const NavBar = () => {
-const[showMenu, setShowMenu] = useState(false)
-const [token, setToken] = useState(true)
-const navigate =useNavigate()
+  const [showMenu, setShowMenu] = useState(false);
+  const [token, setToken] = useState(true);
+  const navigate = useNavigate();
 
-return (
-    <div>
-    <div className='flex items-center justify-between text-sm py-4 mb-5 border-b-gray-400 '>
+  return (
+    <div >
+      {/* Top Navigation */}
+      <div className="flex items-center justify-between text-sm py-4 px-6 border-b border-gray-300">
+        <img onClick={() => navigate('/')} className="w-28 cursor-pointer" src={assets.logo} alt="DigiCare Logo" />
 
-        <img onClick={()=>navigate('/')} className='w-35 cursor-pointer' src={assets.logo} alt='' />
-
-        <ul className='hidden sm:flex items-start gap-4 font-medium relative'>
-            <li className='py-1  border border-gray-300  px-4 hover:scale-105 transition-all' >
-                <Link to='/' element={<Home />}>Home</Link>
-                <hr className='border-none outline-none h-0.5 bg-blue-600 w-3/5 m-auto hidden' />
-            </li>
-            <li className='py-1 border border-gray-300  px-4 hover:scale-105 transition-all'>
-                <Link to='/doctors' element={<Doctors />}>All Doctors</Link>
-                <hr className='border-none outline-none h-0.5 bg-blue-600    w-3/5 m-auto hidden' />
-            </li>
-            <li className='py-1 border border-gray-300  px-4 hover:scale-105 transition-all'>
-                <Link to='/about' element={<About />}>About</Link>
-                <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden' />
-            </li>
-            <li className='py-1 border border-gray-300  px-4 hover:scale-105 transition-all'>
-                <Link to='/contacts' element={<Contact />}>Contacts</Link>
-                <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden' />
-            </li>
+        {/* Nav Links */}
+        <ul className="hidden sm:flex items-center gap-6 font-medium">
+          <li className="py-1 border border-gray-300 px-4 rounded hover:scale-105 transition-all">
+            <Link to="/">Home</Link>
+          </li>
+          <li className="py-1 border border-gray-300 px-4 rounded hover:scale-105 transition-all">
+            <Link to="/doctors">All Doctors</Link>
+          </li>
+          <li className="py-1 border border-gray-300 px-4 rounded hover:scale-105 transition-all">
+            <Link to="/about">About</Link>
+          </li>
+          <li className="py-1 border border-gray-300 px-4 rounded hover:scale-105 transition-all">
+            <Link to="/contacts">Contacts</Link>
+          </li>
         </ul>
 
-        <div className='hidden sm:flex my-5'>
-            {
-                token ?
-                    <div className='relative group'>
-                        <img className='w-8 rounded' src={assets.profile_pic} alt='' />
-                        <img className='w-2.5' src={assets.dropdown_icon} alt='' />
-                        <div className='absolute top-0 right-0 pt-14 text-base font-medium text-gray-600 z-20 hidden group-hover:block'>
-                            <div className='min-w-48 bg-stone-100 rounded flex flex-col gap-4 p-4'>
-                                <p onClick={() => navigate('/Profile')} className='hover:text-black cursor-pointer'>My profile</p>
-                                <p onClick={() => navigate('/my-appointments')} className='hover:text-black cursor-pointer'>My Appointments</p>
-                                <p onClick={()=> setToken} className='hover:text-black cursor-pointer'>Logout</p>
-                            </div>
-                        </div>
-                    </div>
-                    : <button className='bg-blue-500 text-white px-3 py-3 rounded-full font-light'>Create account</button>
-            }
+        {/* User Profile or Login */}
+        <div className="hidden sm:flex items-center">
+          {token ? (
+            <div className="relative group">
+              <img className="w-8 rounded cursor-pointer" src={assets.profile_pic} alt="User Profile" />
+              <div className="absolute right-0 mt-2 bg-white shadow-lg rounded-md py-2 hidden group-hover:block w-40">
+                <p onClick={() => navigate('/profile')} className="px-4 py-2 hover:bg-gray-100 cursor-pointer">My Profile</p>
+                <p onClick={() => navigate('/my-appointments')} className="px-4 py-2 hover:bg-gray-100 cursor-pointer">My Appointments</p>
+                <p onClick={() => setToken(false)} className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-black-500">Logout</p>
+              </div>
+            </div>
+          ) : 
+            <button onClick={() => navigate('/login')} className="bg-blue-500 text-white px-4 py-2 rounded-full">
+              Create Account
+            </button>
+          }
         </div>
-       
-    </div>
-    <div>
-       <hr className='my-2 mb-5'/>
-       </div>
-    </div>
-    
-)
-}
 
-export default NavBar
+        {/* Mobile Menu Toggle */}
+        <div className="sm:hidden cursor-pointer" onClick={() => setShowMenu(!showMenu)}>
+          <img src={assets.dropdown_icon} alt="Menu" className="w-6" />
+        </div>
+      </div>
+
+      {/* Mobile Dropdown Menu */}
+      {showMenu && (
+        <div className="sm:hidden flex flex-col items-center bg-white shadow-md py-4">
+          <Link to="/" className="py-2">Home</Link>
+          <Link to="/doctors" className="py-2">All Doctors</Link>
+          <Link to="/about" className="py-2">About</Link>
+          <Link to="/contacts" className="py-2">Contacts</Link>
+          {token ? (
+            <>
+              <p onClick={() => navigate('/profile')} className="py-2 cursor-pointer">My Profile</p>
+              <p onClick={() => navigate('/my-appointments')} className="py-2 cursor-pointer">My Appointments</p>
+              <p onClick={() => setToken(false)} className="py-2 cursor-pointer text-gray-500">Logout</p>
+            </>
+          ) : (
+            <button onClick={() => navigate('/login')} className="bg-blue-500 text-white px-6 py-2 rounded-full mt-2">
+              Create Account
+            </button>
+          )}
+        </div>
+      )}
+      <div className='mb-4'></div>
+    </div>
+  );
+};
+
+export default NavBar;
