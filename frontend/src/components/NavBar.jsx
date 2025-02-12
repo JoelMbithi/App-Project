@@ -12,6 +12,7 @@ const NavBar = () => {
       {/* Top Navigation */}
       <div className="flex items-center justify-between text-sm py-4 px-6 border-b border-gray-300">
         <img onClick={() => navigate('/')} className="w-28 cursor-pointer" src={assets.logo} alt="DigiCare Logo" />
+       
 
         {/* Nav Links */}
         <ul className="hidden sm:flex items-center gap-6 font-medium">
@@ -33,13 +34,14 @@ const NavBar = () => {
         <div className="hidden sm:flex items-center">
           {token ? (
             <div className="relative group">
-              <img className="w-8 rounded cursor-pointer" src={assets.profile_pic} alt="User Profile" />
-              <div className="absolute right-0 mt-2 bg-white shadow-lg rounded-md py-2 hidden group-hover:block w-40">
-                <p onClick={() => navigate('/profile')} className="px-4 py-2 hover:bg-gray-100 cursor-pointer">My Profile</p>
-                <p onClick={() => navigate('/my-appointments')} className="px-4 py-2 hover:bg-gray-100 cursor-pointer">My Appointments</p>
-                <p onClick={() => setToken(false)} className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-black-500">Logout</p>
-              </div>
+            <img className="w-8 rounded cursor-pointer" src={assets.profile_pic} alt="User Profile" />
+            <div className="absolute right-0 mt-2 bg-white shadow-lg rounded-md py-2 w-40 opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-200">
+              <p onClick={() => navigate('/profile')} className="px-4 py-2 hover:bg-gray-100 cursor-pointer">My Profile</p>
+              <p onClick={() => navigate('/my-appointments')} className="px-4 py-2 hover:bg-gray-100 cursor-pointer">My Appointments</p>
+              <p onClick={() => setToken(false)} className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-black">Logout</p>
             </div>
+          </div>
+          
           ) : 
             <button onClick={() => navigate('/login')} className="bg-blue-500 text-white px-4 py-2 rounded-full">
               Create Account
