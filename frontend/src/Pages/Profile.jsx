@@ -58,7 +58,22 @@ const Profile = () => {
            
         }
       </div>
+      <div>
+        <p>BASIC INFORMATION</p>
+        <div>
+          <p>Gende:</p>
+          {
+            isEdit 
+            ? <select >
+              <ption value="Male">Male</ption>
+              <ption value="Female">Female</ption>
+            </select>
+            : <p></p>
+          }
+        </div>
+      </div>
     </div>
+    
   )
 }
 
