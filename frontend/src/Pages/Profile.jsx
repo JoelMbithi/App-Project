@@ -40,27 +40,27 @@ const Profile = () => {
             ? <input className='bg-gray-200 rounded px-3 max-w-52' onClick={e => setUserData(prev => ({ ...prev, phone: e.target.value }))} value={userData.phone} type='text' />
             : <p className='text-blue-400'>{userData.phone}</p>
         }
-        <p>Address:</p>
+        <p className='font-medium'>Address:</p>
         {
           isEdit
             ?
             <div>
-              <input onChange={e => setUserData(prev => ({ ...prev, address: { ...prev.address, line1: e.target.value } }))} value={userData.address.line1} type='text' />
+              <input className='bg-gray-200' onChange={e => setUserData(prev => ({ ...prev, address: { ...prev.address, line1: e.target.value } }))} value={userData.address.line1} type='text' />
               <br />
-              <input onChange={e => setUserData(prev => ({ ...prev, address: { ...prev.address, line2: e.target.value } }))} value={userData.address.line2} type='text' />
+              <input className='bg-gray-200' onChange={e => setUserData(prev => ({ ...prev, address: { ...prev.address, line2: e.target.value } }))} value={userData.address.line2} type='text' />
             </div>
             :
             <div>
-              <p>{userData.address.line1}</p>
+              <p className='text-gray-500'>{userData.address.line1}</p>
               <br />
-              <p>{userData.address.line2}</p>
+              <p className='text-gray-500'>{userData.address.line2}</p>
             </div>
 
         }
       </div>
       <div>
-        <p>BASIC INFORMATION</p>
-        <div>
+        <p className='text-neutral-500 underline mt-3'>BASIC INFORMATION</p>
+        <div className='grid grid-cols-[1fr_3fr] gap-y-2.5 mt-3 text-neutral-700'>
           <p>Gender:</p>
           {
             isEdit
