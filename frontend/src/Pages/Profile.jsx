@@ -47,6 +47,7 @@ const Profile = () => {
             <div>
               <input className='bg-gray-200' onChange={e => setUserData(prev => ({ ...prev, address: { ...prev.address, line1: e.target.value } }))} value={userData.address.line1} type='text' />
               <br />
+              
               <input className='bg-gray-200' onChange={e => setUserData(prev => ({ ...prev, address: { ...prev.address, line2: e.target.value } }))} value={userData.address.line2} type='text' />
             </div>
             :
@@ -61,28 +62,28 @@ const Profile = () => {
       <div>
         <p className='text-neutral-500 underline mt-3'>BASIC INFORMATION</p>
         <div className='grid grid-cols-[1fr_3fr] gap-y-2.5 mt-3 text-neutral-700'>
-          <p>Gender:</p>
+          <p className='font-medium'>Gender:</p>
           {
             isEdit
-              ? <select onChange={(e) => setUserData(prev => ({ ...prev, gender: e.target.value }))} value={userData.gender}>
+              ? <select className='max-w-20 bg-gray-200' onChange={(e) => setUserData(prev => ({ ...prev, gender: e.target.value }))} value={userData.gender}>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
               </select>
 
-              : <p>{userData.gender}</p>
+              : <p className='text-gray-400'>{userData.gender}</p>
           }
-          <p>Birthday:</p>
+          <p className='font-medium'>Birthday:</p>
           {
             isEdit 
-            ? <input type='date' onChange={(e) => setUserData(prev => ({...prev, dob:e.target.value}))} value={userData.dob}/>
-            : <p>{userData.dob}</p>
+            ? <input className='max-w-28 bg-gray-200' type='date' onChange={(e) => setUserData(prev => ({...prev, dob:e.target.value}))} value={userData.dob}/>
+            : <p className='text-gray-400'>{userData.dob}</p>
           }
         </div>
       </div>
-      <div>
+      <div className='mt-10'>
         {isEdit 
-        ? <button onClick={()=> setIsEdit(false)}>Save information</button>
-        : <button onClick={() => setIsEdit(true)}>Edit</button>
+        ? <button className='border border-gray-600 px-8 py-2 rounded-full hover:bg-blue-600 hover:text-white transition-all' onClick={()=> setIsEdit(false)}>Save information</button>
+        : <button className='border border-gray-600 px-8 py-2 rounded-full hover:bg-blue-600 hover:text-white transition-all' onClick={() => setIsEdit(true)}>Edit</button>
         }
       </div>
     </div>
