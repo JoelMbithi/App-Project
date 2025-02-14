@@ -37,7 +37,7 @@ const NavBar = () => {
             <img className="w-8 rounded cursor-pointer" src={assets.profile_pic} alt="User Profile" />
             <div className="absolute right-0 mt-2 bg-white shadow-lg rounded-md py-2 w-40 opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-200">
               <p onClick={() => navigate('/profile')} className="px-4 py-2 hover:bg-gray-100 cursor-pointer">My Profile</p>
-              <p onClick={() => navigate('/my-appointments')} className="px-4 py-2 hover:bg-gray-100 cursor-pointer">My Appointments</p>
+              <p onClick={() => navigate('/myAppointments')} className="px-4 py-2 hover:bg-gray-100 cursor-pointer">My Appointments</p>
               <p onClick={() => setToken(false)} className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-black">Logout</p>
             </div>
           </div>
@@ -65,7 +65,7 @@ const NavBar = () => {
           {token ? (
             <>
               <p onClick={() => navigate('/profile')} className="py-2 cursor-pointer">My Profile</p>
-              <p onClick={() => navigate('/my-appointments')} className="py-2 cursor-pointer">My Appointments</p>
+              <p onClick={() => navigate('/myAppointment')} className="py-2 cursor-pointer">My Appointments</p>
               <p onClick={() => setToken(false)} className="py-2 cursor-pointer text-gray-500">Logout</p>
             </>
           ) : (
