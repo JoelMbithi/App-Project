@@ -2,6 +2,7 @@ import 'dotenv/config'; // Load environment variables
 import express from 'express';
 import cors from 'cors';
 import connectDB from './Config/MongoDB.js';
+import connectCloudinary from './Config/Cloudinary.js';
 
 // App Config
 const app = express();
@@ -13,6 +14,9 @@ app.use(cors());
 
 // Connect to Database
 connectDB();
+
+//connect to cloudinary
+connectCloudinary()
 
 // API Endpoints
 app.get('/', (req, res) => {

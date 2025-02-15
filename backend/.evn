@@ -1,2 +1,0 @@
-MONGO_URL = 'mongodb+srv://joellembithi:Jhoelloh@webappdev.mlflk.mongodb.net'
-PORT=4000
