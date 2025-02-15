@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { assets } from '../assets/assets';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -7,6 +7,20 @@ const NavBar = () => {
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const [token, setToken] = useState(true);
   const navigate = useNavigate();
+  const profileMenuRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (profileMenuRef.current && !profileMenuRef.current.contains(event.target)) {
+        setShowProfileMenu(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   return (
     <div>
@@ -33,7 +47,7 @@ const NavBar = () => {
         {/* User Profile or Login */}
         <div className="hidden sm:flex items-center">
           {token ? (
-            <div className="relative">
+            <div className="relative" ref={profileMenuRef}>
               <img
                 className="w-8 rounded cursor-pointer"
                 src={assets.profile_pic}
@@ -42,9 +56,15 @@ const NavBar = () => {
               />
               {showProfileMenu && (
                 <div className="absolute right-0 mt-2 bg-white shadow-lg rounded-md py-2 w-40">
-                  <p onClick={() => navigate('/profile')} className="px-4 py-2 hover:bg-gray-100 cursor-pointer">My Profile</p>
-                  <p onClick={() => navigate('/myAppointments')} className="px-4 py-2 hover:bg-gray-100 cursor-pointer">My Appointments</p>
-                  <p onClick={() => setToken(false)} className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-black">Logout</p>
+                  <p onClick={() => { navigate('/profile'); setShowProfileMenu(false); }} className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                    My Profile
+                  </p>
+                  <p onClick={() => { navigate('/myAppointments'); setShowProfileMenu(false); }} className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                    My Appointments
+                  </p>
+                  <p onClick={() => { setToken(false); setShowProfileMenu(false); }} className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-black">
+                    Logout
+                  </p>
                 </div>
               )}
             </div>
@@ -53,11 +73,12 @@ const NavBar = () => {
               Create Account
             </button>
           )}
+         
         </div>
 
         {/* Mobile Menu Toggle */}
         <div className="sm:hidden cursor-pointer" onClick={() => setShowMenu(!showMenu)}>
-          <img src={assets.dropdown_icon} alt="Menu" className="w-6" />
+          <img src={assets.menu_icon} alt="Menu" className="w-6" />
         </div>
       </div>
 
@@ -70,17 +91,22 @@ const NavBar = () => {
           <Link to="/contacts" className="py-2">Contacts</Link>
           {token ? (
             <>
-              <p onClick={() => navigate('/profile')} className="py-2 cursor-pointer">My Profile</p>
-              <p onClick={() => navigate('/myAppointments')} className="py-2 cursor-pointer">My Appointments</p>
-              <p onClick={() => setToken(false)} className="py-2 cursor-pointer text-gray-500">Logout</p>
+              <p onClick={() => { navigate('/profile'); setShowMenu(false); }} className="py-2 cursor-pointer">My Profile</p>
+              <p onClick={() => { navigate('/myAppointments'); setShowMenu(false); }} className="py-2 cursor-pointer">My Appointments</p>
+              <p onClick={() => { setToken(false); setShowMenu(false); }} className="py-2 cursor-pointer text-gray-500">Logout</p>
             </>
           ) : (
             <button onClick={() => navigate('/login')} className="bg-blue-500 text-white px-6 py-2 rounded-full mt-2">
               Create Account
             </button>
           )}
+          
         </div>
+        
       )}
+      
+     
+
       <div className='mb-4'></div>
     </div>
   );
