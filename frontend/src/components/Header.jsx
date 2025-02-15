@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { assets } from '../assets/assets';
 
-
 // Array containing slide data (title, description, and image)
 const slides = [
   {
@@ -20,8 +19,6 @@ const slides = [
     image: assets.group_profiles
   }
 ];
-
-
 
 const Header = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
