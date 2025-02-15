@@ -6,6 +6,13 @@ const TopDoctors = () => {
     const { doctors } = useContext(AppContext);
     const navigate = useNavigate(); // Initialize navigation
 
+    // Define the animation styles
+    const animationStyles = {
+        animation: 'slideIn 3s ease-out',
+        animationTimeline: 'view',
+        animationRange: 'entry 0% cover 40%',
+    };
+
     return (
         <div className='flex flex-col items-center gap-4 my-16 text-gray-900 md:mx-10'>
             <h1 className='text-3xl font-medium'>Find & Book the Best Doctors Near You</h1>  
@@ -18,7 +25,8 @@ const TopDoctors = () => {
                     <div 
                         key={doctor.id || doctor._id} // Ensure unique key
                         className='border border-blue-200 rounded-xl overflow-hidden cursor-pointer hover:-translate-y-2 transition-all duration-500'
-                onClick={() => {navigate(`/appointment/${doctor.id || doctor._id}`); scrollTo=(0,0)}} // Fix reference
+                        style={animationStyles} // Apply the animation styles
+                        onClick={() => {navigate(`/appointment/${doctor.id || doctor._id}`); window.scrollTo(0, 0);}} // Fix reference
                     >
                         <img className='bg-blue-50 w-full' src={doctor.image} alt={doctor.name} />
                         <div className='p-4'>
@@ -33,7 +41,7 @@ const TopDoctors = () => {
                 ))}
             </div>
             
-            <button className='mt-6 px-6 py-2 bg-gray-00 text-white rounded-md hover:bg-gray-600 transition-all'>
+            <button className='mt-6 px-6 py-2 bg-gray-900 text-white rounded-md hover:bg-gray-600 transition-all'>
                 More
             </button>
         </div>

@@ -4,11 +4,13 @@ import SpecialityMenu from '../components/SpecialityMenu'
 import TopDoctors from '../components/TopDoctors'
 import Barnner from '../components/Barnner'
 import Footer from '../components/Footer'
+import AnimatedDispalay from '../components/AnimatedDispalay'
 
 const Home = () => {
   return (
     <div className='text-black-500'>
       <Header/>
+      <AnimatedDispalay />
       <SpecialityMenu />
       <TopDoctors />
       <Barnner />
