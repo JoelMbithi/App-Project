@@ -1,14 +1,9 @@
 {
-<<<<<<< HEAD
-  "devDependencies": {
-    "autoprefixer": "^10.4.20",
-    "tailwindcss": "^4.0.3"
-=======
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "Backend for Doctor Booking Appointment App",
   "main": "server.js",
-  "type":"module",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
@@ -18,7 +13,7 @@
     "type": "git",
     "url": "git+https://github.com/JoelMbithi/App-Project.git"
   },
-  "author": "",
+  "author": "Joel Mbithi",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/JoelMbithi/App-Project/issues"
@@ -33,7 +28,7 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.10.0",
     "multer": "^1.4.5-lts.1",
+    "uuid": "^11.0.5",
     "validator": "^13.12.0"
->>>>>>> 684698b (still solving the Api issue)
   }
 }

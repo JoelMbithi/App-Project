@@ -16,16 +16,15 @@ app.use(cors());
 // Connect to Database
 connectDB();
 
-//connect to cloudinary
-connectCloudinary()
+// Connect to Cloudinary
+connectCloudinary();
 
 // API Endpoints
-
-app.use('/api/admin', adminRouter)
+app.use('/api/admin', adminRouter);
 
 app.get('/', (req, res) => {
   res.send('API WORKING WELL JOE');
 });
 
 // Start Server
-app.listen(port, () => console.log("Server started on port", port));
+app.listen(port, () => console.log(`Server started on port ${port}`));
